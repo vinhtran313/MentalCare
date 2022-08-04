@@ -11,10 +11,12 @@ import 'package:boilerplate/widgets/empty_app_bar_widget.dart';
 import 'package:boilerplate/widgets/progress_indicator_widget.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/textfield_widget.dart';
+import 'package:boilerplate/widgets/custom_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -50,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      primary: true,
+      primary: false,
       appBar: EmptyAppBar(),
       body: _buildBody(),
     );
@@ -61,6 +63,13 @@ class _LoginScreenState extends State<LoginScreen> {
     return Material(
       child: Stack(
         children: <Widget>[
+          Align(
+            alignment: Alignment.topRight,
+            child: SvgPicture.asset(
+              'assets/images/img_decor.svg',
+              fit: BoxFit.fill,
+            ),
+          ),
           MediaQuery.of(context).orientation == Orientation.landscape
               ? Row(
                   children: <Widget>[
@@ -113,7 +122,6 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            AppIconWidget(image: 'assets/icons/ic_appicon.png'),
             SizedBox(height: 24.0),
             _buildUserIdField(),
             _buildPasswordField(),
@@ -128,10 +136,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildUserIdField() {
     return Observer(
       builder: (context) {
-        return TextFieldWidget(
+        return CustomTextFieldWidget(
           hint: AppLocalizations.of(context).translate('login_et_user_email'),
           inputType: TextInputType.emailAddress,
-          icon: Icons.person,
+          icon: Icons.mail,
           iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
           textController: _userEmailController,
           inputAction: TextInputAction.next,
@@ -143,6 +151,8 @@ class _LoginScreenState extends State<LoginScreen> {
             FocusScope.of(context).requestFocus(_passwordFocusNode);
           },
           errorText: _store.formErrorStore.userEmail,
+          padding: EdgeInsets.only(left: 10, bottom: 5, right: 10, top: 5),
+          margin: EdgeInsets.only(left: 0, bottom: 20, right: 0, top: 0),
         );
       },
     );
@@ -151,11 +161,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildPasswordField() {
     return Observer(
       builder: (context) {
-        return TextFieldWidget(
+        return CustomTextFieldWidget(
           hint:
               AppLocalizations.of(context).translate('login_et_user_password'),
           isObscure: true,
-          padding: EdgeInsets.only(top: 16.0),
+          padding: EdgeInsets.only(left: 10, bottom: 5, right: 10, top: 5),
           icon: Icons.lock,
           iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
           textController: _passwordController,
