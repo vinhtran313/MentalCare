@@ -62,7 +62,7 @@ class AppThemeData {
   static const ColorScheme lightColorScheme = ColorScheme(
     primary: Color(0xFF6EBD4C),
     primaryContainer: Color.fromRGBO(126, 217, 87, 0.1),
-    secondary: Color(0xFFEFF3F3),
+    secondary: Color.fromRGBO(0, 0, 0, 0.2),
     secondaryContainer: Color(0xFFFAFBFB),
     background: Color(0xFFFFFFFF),
     surface: Color(0xFFFAFBFB),

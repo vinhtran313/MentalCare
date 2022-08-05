@@ -33,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   //focus node:-----------------------------------------------------------------
   late FocusNode _passwordFocusNode;
+  late FocusNode _userEmailFocusNode;
 
   //stores:---------------------------------------------------------------------
   final _store = FormStore();
@@ -41,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     _passwordFocusNode = FocusNode();
+    _userEmailFocusNode = FocusNode();
   }
 
   @override
@@ -150,9 +152,11 @@ class _LoginScreenState extends State<LoginScreen> {
           onFieldSubmitted: (value) {
             FocusScope.of(context).requestFocus(_passwordFocusNode);
           },
-          errorText: _store.formErrorStore.userEmail,
-          padding: EdgeInsets.only(left: 10, bottom: 5, right: 10, top: 5),
+          errorText: null,
+          padding: EdgeInsets.only(left: 10, bottom: 10, right: 10, top: 10),
           margin: EdgeInsets.only(left: 0, bottom: 20, right: 0, top: 0),
+          label: 'EMAIL',
+          focusNode: _userEmailFocusNode,
         );
       },
     );
@@ -165,15 +169,16 @@ class _LoginScreenState extends State<LoginScreen> {
           hint:
               AppLocalizations.of(context).translate('login_et_user_password'),
           isObscure: true,
-          padding: EdgeInsets.only(left: 10, bottom: 5, right: 10, top: 5),
+          padding: EdgeInsets.only(left: 10, bottom: 10, right: 10, top: 10),
           icon: Icons.lock,
           iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
           textController: _passwordController,
           focusNode: _passwordFocusNode,
-          errorText: _store.formErrorStore.password,
+          errorText: null,
           onChanged: (value) {
             _store.setPassword(_passwordController.text);
           },
+          label: 'PASSWORD',
         );
       },
     );
@@ -249,6 +254,7 @@ class _LoginScreenState extends State<LoginScreen> {
     _userEmailController.dispose();
     _passwordController.dispose();
     _passwordFocusNode.dispose();
+    _userEmailFocusNode.dispose();
     super.dispose();
   }
 }

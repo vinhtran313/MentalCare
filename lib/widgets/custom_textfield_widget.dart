@@ -34,7 +34,7 @@ class CustomTextFieldWidget extends StatelessWidget {
                 obscureText: this.isObscure,
                 maxLength: 25,
                 keyboardType: this.inputType,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16.0),
                 decoration: InputDecoration(
                   hintText: this.hint,
                   hintStyle: Theme.of(context)
@@ -54,13 +54,38 @@ class CustomTextFieldWidget extends StatelessWidget {
     }
     return Container(
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          border: Border.all(color: Theme.of(context).colorScheme.primary),
+          color: (this.focusNode?.hasFocus ?? false)
+              ? Theme.of(context).colorScheme.primaryContainer
+              : Colors.transparent,
+          border: Border.all(
+              color: (this.focusNode?.hasFocus ?? false)
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).colorScheme.secondary),
           borderRadius: BorderRadius.circular(10)),
       margin: this.margin,
       child: Padding(
         padding: padding,
-        child: Row(children: listChildWidget),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                SizedBox.fromSize(
+                  size: Size(30, 10),
+                ),
+                Align(
+                  child: Text(
+                    this.label ?? '',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color(0xFF828282), fontWeight: FontWeight.bold),
+                  ),
+                  alignment: Alignment.centerLeft,
+                )
+              ],
+            ),
+            Row(children: listChildWidget)
+          ],
+        ),
       ),
     );
   }
