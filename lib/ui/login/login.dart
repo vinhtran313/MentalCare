@@ -291,12 +291,10 @@ class _LoginScreenState extends State<LoginScreen> {
       ],
       textColor: Colors.white,
       onPressed: () async {
-        if (_store.canLogin) {
-          DeviceUtils.hideKeyboard(context);
-          _store.login();
-        } else {
-          _showErrorMessage('Please fill in all fields');
-        }
+        Future.delayed(Duration(milliseconds: 0), () {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              Routes.home, (Route<dynamic> route) => false);
+        });
       },
     );
   }
