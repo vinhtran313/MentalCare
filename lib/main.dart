@@ -10,6 +10,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setPreferredOrientations();
   await setupLocator();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, //or set color with: Color(0xFF0000FF)
+    statusBarIconBrightness: Brightness.dark,
+  ));
   return runZonedGuarded(() async {
     runApp(MyApp());
   }, (error, stack) {
