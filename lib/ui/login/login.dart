@@ -8,6 +8,7 @@ import 'package:boilerplate/utils/device/device_utils.dart';
 import 'package:boilerplate/utils/locale/app_localization.dart';
 import 'package:boilerplate/widgets/app_icon_widget.dart';
 import 'package:boilerplate/widgets/empty_app_bar_widget.dart';
+import 'package:boilerplate/widgets/gradient_button_widget.dart';
 import 'package:boilerplate/widgets/progress_indicator_widget.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/textfield_widget.dart';
@@ -117,21 +118,90 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildRightSide() {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 24.0),
-            _buildUserIdField(),
-            _buildPasswordField(),
-            _buildForgotPasswordButton(),
-            _buildSignInButton()
-          ],
+      child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Spacer(),
+                _buildTitle(),
+                _buildUserIdField(),
+                _buildPasswordField(),
+                // _buildForgotPasswordButton(),
+                SizedBox.fromSize(
+                  size: Size(1, 50),
+                ),
+                _buildSignInButton(),
+                Spacer(),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Row(
+                    children: [
+                      Spacer(),
+                      Text('Don\'t have account?'),
+                      Padding(
+                        padding: EdgeInsets.all(0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.transparent,
+                              padding: EdgeInsets.all(0),
+                              shadowColor: Colors.transparent),
+                          child: Text(
+                            "Sign up",
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary),
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+                SizedBox.fromSize(
+                  size: Size(1, 20),
+                )
+              ],
+            ),
+          )),
+    );
+  }
+
+  Widget _buildTitle() {
+    return Column(
+      children: [
+        Align(
+          child: Text(
+            'Login',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+                color: Color(0xFF000000),
+                fontWeight: FontWeight.bold,
+                fontSize: 30),
+          ),
+          alignment: Alignment.centerLeft,
         ),
-      ),
+        SizedBox.fromSize(
+          size: Size(1, 20),
+        ),
+        Align(
+          child: Text(
+            'Please sign in to continue',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: Color(0xFF000000),
+            ),
+          ),
+          alignment: Alignment.centerLeft,
+        ),
+        SizedBox.fromSize(
+          size: Size(1, 20),
+        ),
+      ],
     );
   }
 
@@ -179,6 +249,17 @@ class _LoginScreenState extends State<LoginScreen> {
             _store.setPassword(_passwordController.text);
           },
           label: 'PASSWORD',
+          rightInputWidget: Container(
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.transparent, shadowColor: Colors.transparent),
+              child: Text(
+                "Forgot",
+                style: TextStyle(color: Theme.of(context).colorScheme.primary),
+              ),
+            ),
+          ),
         );
       },
     );
@@ -194,7 +275,7 @@ class _LoginScreenState extends State<LoginScreen> {
           style: Theme.of(context)
               .textTheme
               .caption
-              ?.copyWith(color: Colors.orangeAccent),
+              ?.copyWith(color: Theme.of(context).colorScheme.primary),
         ),
         onPressed: () {},
       ),
@@ -202,9 +283,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildSignInButton() {
-    return RoundedButtonWidget(
+    return GradientButtonWidget(
       buttonText: AppLocalizations.of(context).translate('login_btn_sign_in'),
-      buttonColor: Colors.orangeAccent,
+      buttonColors: [
+        Color(0xFF5CE1E6),
+        Color(0xFF7ED957),
+      ],
       textColor: Colors.white,
       onPressed: () async {
         if (_store.canLogin) {

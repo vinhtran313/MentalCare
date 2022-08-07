@@ -18,6 +18,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final ValueChanged? onChanged;
   final bool autoFocus;
   final TextInputAction? inputAction;
+  final Widget? rightInputWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +52,9 @@ class CustomTextFieldWidget extends StatelessWidget {
     if (this.isIcon) {
       listChildWidget.insert(0, SizedBox(width: 8));
       listChildWidget.insert(0, Icon(this.icon, color: iconColor));
+    }
+    if (this.rightInputWidget != null) {
+      listChildWidget.add(this.rightInputWidget!);
     }
     return Container(
       decoration: BoxDecoration(
@@ -108,6 +112,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.autoFocus = false,
     this.inputAction,
     this.label,
+    this.rightInputWidget,
     this.margin = const EdgeInsets.all(0),
   }) : super(key: key);
 }
