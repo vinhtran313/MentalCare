@@ -1,12 +1,21 @@
 import 'package:boilerplate/utils/locale/app_localization.dart';
 import 'package:flutter/material.dart';
 
-class ProductDto {
+class CourseDto {
   String? id;
   String? name;
   String? description;
   String? author;
   double? price;
+  CourseDto(this.id, this.author, this.description, this.name, this.price);
+}
+
+class CategoryCourseDto {
+  String? id;
+  String? name;
+  List<CourseDto>? courses;
+
+  CategoryCourseDto(this.id, this.name, this.courses);
 }
 
 class CoursesScreen extends StatefulWidget {
@@ -15,7 +24,24 @@ class CoursesScreen extends StatefulWidget {
 }
 
 class _CoursesScreenState extends State<CoursesScreen> {
-  final List<ProductDto> fakeData = [];
+  final List<CategoryCourseDto> fakeData = [
+    CategoryCourseDto("1", 'Popular courses', [
+      CourseDto('11', 'Do Xuan Tien', 'This is some description',
+          'Course for mental heal level 1', 500),
+      CourseDto('12', 'Do Xuan Tien', 'This is some description',
+          'Course for mental heal level 2', 500),
+      CourseDto('13', 'Do Xuan Tien', 'This is some description',
+          'Course for mental heal level 3', 500)
+    ]),
+    CategoryCourseDto("2", 'New courses', [
+      CourseDto('21', 'Tran Hoang Vinh', 'This is some description',
+          'Exams for mental coaching level 1', 1500),
+      CourseDto('22', 'Tran Hoang Vinh', 'This is some description',
+          'Exams for mental coaching level 2', 1500),
+      CourseDto('23', 'Tran Hoang Vinh', 'This is some description',
+          'Exams for mental coaching level 3', 1500)
+    ])
+  ];
   @override
   void initState() {
     super.initState();
@@ -51,7 +77,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
   }
 
   Widget _buildMainContent() {
-    return Text('_buildMainContent');
+    return _buildListView();
   }
 
   Widget _buildListView() {
@@ -78,7 +104,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
         style: Theme.of(context).textTheme.subtitle1,
       ),
       subtitle: Text(
-        '${this.fakeData[position].description}',
+        '${this.fakeData[position].name}',
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         softWrap: false,

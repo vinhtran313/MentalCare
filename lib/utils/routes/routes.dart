@@ -1,3 +1,4 @@
+import 'package:boilerplate/ui/courses/courses.dart';
 import 'package:boilerplate/ui/home/home.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
@@ -10,13 +11,12 @@ class Routes {
   static const String splash = '/splash';
   static const String login = '/login';
   static const String home = '/home';
+  static const String courses = '/courses';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
     login: (BuildContext context) => LoginScreen(),
     home: (BuildContext context) => HomeScreen(),
+    courses: (BuildContext context) => CoursesScreen(),
   };
 }
-
-
-
