@@ -11,6 +11,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:material_dialog/material_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import './components/bottomTabBar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -22,6 +23,37 @@ class _HomeScreenState extends State<HomeScreen> {
   late PostStore _postStore;
   late ThemeStore _themeStore;
   late LanguageStore _languageStore;
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Chat',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: List',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 4: Settings',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Main',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   void initState() {
@@ -43,11 +75,26 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void _onTapped(int _selectedIndex) {
+    print('_selectedIndex');
+  }
+
+  void _updateIndex(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: _buildBody(),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: _buildFloatingButton(),
+      bottomNavigationBar: _buildBottomTabNavigation(),
     );
   }
 
@@ -79,6 +126,53 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildFloatingButton() {
+    return Container(
+      width: 75,
+      height: 75,
+      child: FloatingActionButton(
+          splashColor: Colors.purple[50],
+          backgroundColor: Colors.purple[50],
+          onPressed: () {
+            _updateIndex(4);
+          },
+          child: Container(
+            padding: EdgeInsets.all(10),
+            child: Image.asset(
+              'assets/images/logo_png.png',
+              fit: BoxFit.fill,
+              color: _selectedIndex == 4
+                  ? Color.fromARGB(255, 128, 3, 150)
+                  : Colors.grey,
+            ),
+          ),
+          elevation: 2.0,
+          enableFeedback: false),
+    );
+  }
+
+  Widget _buildBottomTabNavigation() {
+    return FABBottomAppBar(
+      onItemTapped: _updateIndex,
+      selectedIndex: _selectedIndex,
+      centerItemText: '',
+      color: Colors.grey,
+      backgroundColor: Colors.white,
+      selectedColor: Color.fromARGB(255, 137, 2, 161),
+      notchedShape: CircularNotchedRectangle(),
+      onTabSelected: _onTapped,
+      items: [
+        FABBottomAppBarItem(
+            iconData: 'assets/images/home_filled.png', text: 'หน้าแรก'),
+        FABBottomAppBarItem(iconData: 'assets/images/chat.png', text: 'ค้นหา'),
+        FABBottomAppBarItem(
+            iconData: 'assets/images/list_doctor.png', text: 'โปรไฟล์'),
+        FABBottomAppBarItem(
+            iconData: 'assets/images/setting.png', text: 'อื่นๆ'),
+      ],
     );
   }
 
@@ -192,51 +286,53 @@ class _HomeScreenState extends State<HomeScreen> {
     return SizedBox.shrink();
   }
 
-_buildLanguageDialog() {
-  _showDialog<String>(
-    context: context,
-    child: MaterialDialog(
-      borderRadius: 5.0,
-      enableFullWidth: true,
-      title: Text(
-        AppLocalizations.of(context).translate('home_tv_choose_language'),
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
+  _buildLanguageDialog() {
+    _showDialog<String>(
+      context: context,
+      child: MaterialDialog(
+        borderRadius: 5.0,
+        enableFullWidth: true,
+        title: Text(
+          AppLocalizations.of(context).translate('home_tv_choose_language'),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+          ),
         ),
-      ),
-      headerColor: Theme.of(context).primaryColor,
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      closeButtonColor: Colors.white,
-      enableCloseButton: true,
-      enableBackButton: false,
-      onCloseButtonClicked: () {
-        Navigator.of(context).pop();
-      },
-      children: _languageStore.supportedLanguages
-          .map(
-            (object) => ListTile(
-              dense: true,
-              contentPadding: EdgeInsets.all(0.0),
-              title: Text(
-                object.language!,
-                style: TextStyle(
-                  color: _languageStore.locale == object.locale
-                      ? Theme.of(context).primaryColor
-                      : _themeStore.darkMode ? Colors.white : Colors.black,
+        headerColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        closeButtonColor: Colors.white,
+        enableCloseButton: true,
+        enableBackButton: false,
+        onCloseButtonClicked: () {
+          Navigator.of(context).pop();
+        },
+        children: _languageStore.supportedLanguages
+            .map(
+              (object) => ListTile(
+                dense: true,
+                contentPadding: EdgeInsets.all(0.0),
+                title: Text(
+                  object.language!,
+                  style: TextStyle(
+                    color: _languageStore.locale == object.locale
+                        ? Theme.of(context).primaryColor
+                        : _themeStore.darkMode
+                            ? Colors.white
+                            : Colors.black,
+                  ),
                 ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  // change user language based on selected locale
+                  _languageStore.changeLanguage(object.locale!);
+                },
               ),
-              onTap: () {
-                Navigator.of(context).pop();
-                // change user language based on selected locale
-                _languageStore.changeLanguage(object.locale!);
-              },
-            ),
-          )
-          .toList(),
-    ),
-  );
-}
+            )
+            .toList(),
+      ),
+    );
+  }
 
   _showDialog<T>({required BuildContext context, required Widget child}) {
     showDialog<T>(
