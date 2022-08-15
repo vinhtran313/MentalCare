@@ -10,8 +10,9 @@ class CourseDto {
   double? price;
   bool isHot;
   String image;
+  String subscript;
   CourseDto(this.id, this.author, this.description, this.name, this.price,
-      this.isHot, this.image);
+      this.isHot, this.image, this.subscript);
 }
 
 class CategoryCourseDto {
@@ -37,7 +38,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           'Course for mental heal level 1',
           500,
           true,
-          'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(98)'),
       CourseDto(
           '12',
           'Do Xuan Tien',
@@ -45,7 +47,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           'Course for mental heal level 2',
           500,
           false,
-          'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(5)'),
       CourseDto(
           '13',
           'Do Xuan Tien',
@@ -53,7 +56,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           'Course for mental heal level 3',
           500,
           false,
-          'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(56)')
     ]),
     CategoryCourseDto("2", 'New courses', [
       CourseDto(
@@ -63,7 +67,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           'Exams for mental coaching level 1',
           1500,
           false,
-          'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(396)'),
       CourseDto(
           '22',
           'Tran Hoang Vinh',
@@ -71,7 +76,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           'Exams for mental coaching level 2',
           1500,
           true,
-          'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(221)'),
       CourseDto(
           '23',
           'Tran Hoang Vinh',
@@ -79,7 +85,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           'Exams for mental coaching level 3',
           1500,
           false,
-          'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(83)')
     ])
   ];
   @override
@@ -100,13 +107,14 @@ class _CoursesScreenState extends State<CoursesScreen> {
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       backgroundColor: Color(0xFFF3F6FD),
-      title: Text(AppLocalizations.of(context).translate('home_tv_posts')),
-      actions: _buildActions(context),
+      title: Align(
+        child: Text(
+          'List courses',
+          textAlign: TextAlign.center,
+        ),
+      ),
+      // actions: _buildActions(context),
     );
-  }
-
-  List<Widget> _buildActions(BuildContext context) {
-    return <Widget>[Text('_buildActions')];
   }
 
   // body methods:--------------------------------------------------------------
@@ -139,25 +147,6 @@ class _CoursesScreenState extends State<CoursesScreen> {
     );
   }
 
-  // Widget _buildListItem(int position) {
-  //   return ListTile(
-  //     dense: true,
-  //     leading: Icon(Icons.cloud_circle),
-  //     title: Text(
-  //       '${this.fakeData[position].name}',
-  //       maxLines: 1,
-  //       overflow: TextOverflow.ellipsis,
-  //       softWrap: false,
-  //       style: Theme.of(context).textTheme.subtitle1,
-  //     ),
-  //     subtitle: Text(
-  //       '${this.fakeData[position].name}',
-  //       maxLines: 1,
-  //       overflow: TextOverflow.ellipsis,
-  //       softWrap: false,
-  //     ),
-  //   );
-  // }
   Widget _buildListItem(int position) {
     return Container(
       child: Column(
@@ -189,7 +178,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
           ),
           Container(
             width: 500,
-            height: 300,
+            height: 350,
             child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 physics: ClampingScrollPhysics(),
@@ -212,112 +201,128 @@ class _CoursesScreenState extends State<CoursesScreen> {
   Widget _buildListCourseItem(int cateCoursePosition, int coursePosition) {
     CourseDto? data =
         this.fakeData[cateCoursePosition].courses?[coursePosition];
-    return Container(
-      width: 200,
-      height: 300,
-      margin: EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(10)),
-      child: Stack(children: [
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-          child: Column(
-            children: [
-              // Positioned(child: Text('HOT'), top: 0,left: 0,),
-              Expanded(
-                  child: Image.network(
-                data?.image ?? '',
-                fit: BoxFit.fill,
-              )),
-              Expanded(
-                  child: Column(
-                children: [
-                  Expanded(
-                      child: Text(
-                    '${this.fakeData[cateCoursePosition].courses?[coursePosition].name}',
-                    maxLines: 2,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )),
-                  Expanded(
-                      child: Align(
-                    alignment: Alignment.centerLeft,
+    List<Widget> listView = [
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        child: Column(
+          children: [
+            // Positioned(child: Text('HOT'), top: 0,left: 0,),
+            Expanded(
+                child: Image.network(
+              data?.image ?? '',
+              fit: BoxFit.fill,
+            )),
+            Expanded(
+                child: Column(
+              children: [
+                Expanded(
                     child: Text(
-                      '${this.fakeData[cateCoursePosition].courses?[coursePosition].author}',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Color(0xFF686868), fontSize: 15),
-                    ),
-                  )),
-                  Expanded(
-                      child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: RatingBar(
-                        itemSize: 15,
-                        ignoreGestures: true,
-                        initialRating: 4,
-                        direction: Axis.horizontal,
-                        itemCount: 5,
-                        ratingWidget: RatingWidget(
-                            full: const Icon(Icons.star,
-                                color: Color(0xFFB201DE)),
-                            half: const Icon(
-                              Icons.star_half,
-                              color: Color(0xFFB201DE),
-                            ),
-                            empty: const Icon(
-                              Icons.star_outline,
-                              color: Color(0xFFB201DE),
-                            )),
-                        onRatingUpdate: (value) {}),
-                  )),
-                  Expanded(
-                      child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      '${this.fakeData[cateCoursePosition].courses?[coursePosition].price}\$',
-                      textAlign: TextAlign.left,
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                  ))
-                ],
-              ))
-            ],
-          ),
+                  '${this.fakeData[cateCoursePosition].courses?[coursePosition].name}',
+                  maxLines: 2,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+                Expanded(
+                    child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '${this.fakeData[cateCoursePosition].courses?[coursePosition].author}',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(color: Color(0xFF686868), fontSize: 15),
+                  ),
+                )),
+                Expanded(
+                    child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        '4.5',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      SizedBox(
+                        width: 4,
+                        height: 1,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: RatingBar(
+                            itemSize: 16,
+                            ignoreGestures: true,
+                            initialRating: 4,
+                            direction: Axis.horizontal,
+                            itemCount: 5,
+                            ratingWidget: RatingWidget(
+                                full: const Icon(Icons.star,
+                                    color: Color(0xFFB201DE)),
+                                half: const Icon(
+                                  Icons.star_half,
+                                  color: Color(0xFFB201DE),
+                                ),
+                                empty: const Icon(
+                                  Icons.star_outline,
+                                  color: Color(0xFFB201DE),
+                                )),
+                            onRatingUpdate: (value) {}),
+                      ),
+                      SizedBox(
+                        width: 4,
+                        height: 1,
+                      ),
+                      Text(
+                        '${data?.subscript}',
+                        style: TextStyle(fontSize: 14),
+                      )
+                    ],
+                  ),
+                )),
+                Expanded(
+                    child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '${this.fakeData[cateCoursePosition].courses?[coursePosition].price}\$',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ))
+              ],
+            ))
+          ],
         ),
-        Positioned(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-            child: Text('HOT'),
-          ),
-          left: 0,
-          top: 0,
-        ),
-      ]),
+      ),
+    ];
+    if (data?.isHot ?? false) {
+      listView.add(Positioned(
+        child: Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10))),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              child: Text(
+                'HOT',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            )),
+        left: 0,
+        top: 0,
+      ));
+    }
+    return GestureDetector(
+      onTap: (() {}),
+      child: Container(
+        width: 200,
+        height: 350,
+        margin: EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(10)),
+        child: Stack(children: listView),
+      ),
     );
   }
-  // General Methods:-----------------------------------------------------------
-  // _showErrorMessage(String message) {
-  //   Future.delayed(Duration(milliseconds: 0), () {
-  //     if (message.isNotEmpty) {
-  //       FlushbarHelper.createError(
-  //         message: message,
-  //         title: AppLocalizations.of(context).translate('home_tv_error'),
-  //         duration: Duration(seconds: 3),
-  //       )..show(context);
-  //     }
-  //   });
-
-  //   return SizedBox.shrink();
-  // }
-
-  // _showDialog<T>({required BuildContext context, required Widget child}) {
-  //   showDialog<T>(
-  //     context: context,
-  //     builder: (BuildContext context) => child,
-  //   ).then<void>((T? value) {
-  //     // The value passed to Navigator.pop() or null.
-  //   });
-  // }
 }
