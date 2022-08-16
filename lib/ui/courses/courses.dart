@@ -1,4 +1,5 @@
 import 'package:boilerplate/utils/locale/app_localization.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -87,6 +88,44 @@ class _CoursesScreenState extends State<CoursesScreen> {
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
           '(83)')
+    ]),
+    CategoryCourseDto("3", 'Hot course', [
+      CourseDto(
+          '31',
+          'Trinh Van Quyet',
+          'This is some description',
+          'Metal care for Stock trader sesson 1',
+          1299,
+          false,
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(5632)'),
+      CourseDto(
+          '32',
+          'Trinh Van Quyet',
+          'This is some description',
+          'Metal care for Stock trader sesson 2',
+          5999,
+          false,
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(31)'),
+      CourseDto(
+          '33',
+          'Trinh Van Quyet',
+          'This is some description',
+          'Metal care for Stock trader sesson 3',
+          4569,
+          false,
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(369)'),
+      CourseDto(
+          '34',
+          'Trinh Van Quyet',
+          'This is some description',
+          'Metal care for Stock trader sesson 4',
+          2389,
+          false,
+          'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+          '(222)')
     ])
   ];
   @override
@@ -314,7 +353,9 @@ class _CoursesScreenState extends State<CoursesScreen> {
       ));
     }
     return GestureDetector(
-      onTap: (() {}),
+      onTap: (() {
+        Navigator.of(context).pushNamed(Routes.detail_course, arguments: data);
+      }),
       child: Container(
         width: 200,
         height: 350,
