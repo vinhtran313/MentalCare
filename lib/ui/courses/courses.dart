@@ -12,8 +12,9 @@ class CourseDto {
   bool isHot;
   String image;
   String subscript;
+  String videoLink;
   CourseDto(this.id, this.author, this.description, this.name, this.price,
-      this.isHot, this.image, this.subscript);
+      this.isHot, this.image, this.subscript, this.videoLink);
 }
 
 class CategoryCourseDto {
@@ -40,7 +41,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           500,
           true,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(98)'),
+          '(98)',
+          'oxx564hMBUI'),
       CourseDto(
           '12',
           'Do Xuan Tien',
@@ -49,7 +51,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           500,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(5)'),
+          '(5)',
+          'oxx564hMBUI'),
       CourseDto(
           '13',
           'Do Xuan Tien',
@@ -58,7 +61,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           500,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(56)')
+          '(56)',
+          'oxx564hMBUI')
     ]),
     CategoryCourseDto("2", 'New courses', [
       CourseDto(
@@ -69,7 +73,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           1500,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(396)'),
+          '(396)',
+          'oxx564hMBUI'),
       CourseDto(
           '22',
           'Tran Hoang Vinh',
@@ -78,7 +83,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           1500,
           true,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(221)'),
+          '(221)',
+          'oxx564hMBUI'),
       CourseDto(
           '23',
           'Tran Hoang Vinh',
@@ -87,7 +93,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           1500,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(83)')
+          '(83)',
+          'oxx564hMBUI')
     ]),
     CategoryCourseDto("3", 'Hot course', [
       CourseDto(
@@ -98,7 +105,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           1299,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(5632)'),
+          '(5632)',
+          'oxx564hMBUI'),
       CourseDto(
           '32',
           'Trinh Van Quyet',
@@ -107,7 +115,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           5999,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(31)'),
+          '(31)',
+          'oxx564hMBUI'),
       CourseDto(
           '33',
           'Trinh Van Quyet',
@@ -116,7 +125,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           4569,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(369)'),
+          '(369)',
+          'oxx564hMBUI'),
       CourseDto(
           '34',
           'Trinh Van Quyet',
@@ -125,7 +135,8 @@ class _CoursesScreenState extends State<CoursesScreen> {
           2389,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-          '(222)')
+          '(222)',
+          'oxx564hMBUI')
     ])
   ];
   @override
