@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
       height: 75,
       child: FloatingActionButton(
           splashColor: Colors.purple[50],
-          backgroundColor: Colors.purple[50],
+          backgroundColor: Color.fromRGBO(238, 232, 255, 1),
           onPressed: () {
             _updateIndex(4);
           },
@@ -143,10 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.all(10),
             child: Image.asset(
               'assets/images/logo_png.png',
-              fit: BoxFit.fill,
-              color: _selectedIndex == 4
-                  ? Color.fromARGB(255, 128, 3, 150)
-                  : Colors.grey,
+              fit: BoxFit.fill
             ),
           ),
           elevation: 2.0,
