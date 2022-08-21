@@ -12,6 +12,7 @@ import 'package:material_dialog/material_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './components/bottomTabBar.dart';
+import '../chat/chat.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -26,15 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
       style: optionStyle,
     ),
-    Text(
-      'Index 1: Chat',
-      style: optionStyle,
-    ),
+    ChatPage(),
     Text(
       'Index 3: List',
       style: optionStyle,
