@@ -280,6 +280,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildSignInButton() {
     return GradientButtonWidget(
+      padding: EdgeInsets.symmetric(vertical: 8),
       buttonText: AppLocalizations.of(context).translate('login_btn_sign_in'),
       buttonColor: Theme.of(context).colorScheme.primary,
       textColor: Colors.white,
