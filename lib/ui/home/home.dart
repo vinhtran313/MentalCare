@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './components/bottomTabBar.dart';
 import '../chat/chat.dart';
+import '../setting/settings.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -37,10 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'Index 3: List',
       style: optionStyle,
     ),
-    Text(
-      'Index 4: Settings',
-      style: optionStyle,
-    ),
+    SettingPages(),
     Text(
       'Index 2: Main',
       style: optionStyle,
