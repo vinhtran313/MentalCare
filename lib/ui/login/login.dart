@@ -287,7 +287,7 @@ class _LoginScreenState extends State<LoginScreen> {
       onPressed: () async {
         Future.delayed(Duration(milliseconds: 0), () {
           Navigator.of(context).pushNamedAndRemoveUntil(
-              Routes.courses, (Route<dynamic> route) => false);
+              Routes.home, (Route<dynamic> route) => false);
         });
       },
     );

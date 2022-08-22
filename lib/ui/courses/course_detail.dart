@@ -188,8 +188,9 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                                   ),
                                 ),
                                 onTap: () {
-                                  Navigator.of(context)
-                                      .pushNamed(Routes.my_courses);
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      Routes.home,
+                                      (Route<dynamic> route) => false);
                                   // change user language based on selected locale
                                 },
                               )
