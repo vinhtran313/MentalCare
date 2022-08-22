@@ -156,7 +156,6 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                 buttonColor: Theme.of(context).colorScheme.primary,
                 textColor: Colors.white,
                 onPressed: () async {
-                  _userStore.addCourse(_dataCourse);
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => MaterialDialog(

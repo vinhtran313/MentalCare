@@ -2,7 +2,21 @@ import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+class LessonDto {
+  String id;
+  String name;
+  String description;
+  String videoLink;
+  String title;
+  String image;
+
+  LessonDto(this.id, this.description, this.name, this.videoLink, this.title,
+      this.image);
+}
+
 class CourseDto {
+  static const String descriptionDemo =
+      'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.';
   String? id;
   String? name;
   String? description;
@@ -12,8 +26,11 @@ class CourseDto {
   String image;
   String subscript;
   String videoLink;
+  int? currentLessonIdx;
+  List<LessonDto> lessons;
   CourseDto(this.id, this.author, this.description, this.name, this.price,
-      this.isHot, this.image, this.subscript, this.videoLink);
+      this.isHot, this.image, this.subscript, this.videoLink,
+      {this.lessons = const []});
 }
 
 class CategoryCourseDto {
@@ -35,7 +52,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '11',
           'Do Xuan Tien',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Course for mental heal level 1',
           500,
           true,
@@ -45,7 +62,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '12',
           'Do Xuan Tien',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Course for mental heal level 2',
           500,
           false,
@@ -55,7 +72,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '13',
           'Do Xuan Tien',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Course for mental heal level 3',
           500,
           false,
@@ -67,7 +84,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '21',
           'Tran Hoang Vinh',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Exams for mental coaching level 1',
           1500,
           false,
@@ -77,7 +94,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '22',
           'Tran Hoang Vinh',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Exams for mental coaching level 2',
           1500,
           true,
@@ -87,7 +104,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '23',
           'Tran Hoang Vinh',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Exams for mental coaching level 3',
           1500,
           false,
@@ -99,7 +116,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '31',
           'Trinh Van Quyet',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Metal care for Stock trader sesson 1',
           1299,
           false,
@@ -109,7 +126,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '32',
           'Trinh Van Quyet',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Metal care for Stock trader sesson 2',
           5999,
           false,
@@ -119,7 +136,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '33',
           'Trinh Van Quyet',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Metal care for Stock trader sesson 3',
           4569,
           false,
@@ -129,7 +146,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
       CourseDto(
           '34',
           'Trinh Van Quyet',
-          'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+          CourseDto.descriptionDemo,
           'Metal care for Stock trader sesson 4',
           2389,
           false,

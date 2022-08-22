@@ -61,73 +61,203 @@ abstract class _UserStore with Store {
     CourseDto(
         '11',
         'Do Xuan Tien',
-        'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+        CourseDto.descriptionDemo,
         'Course for mental heal level 1',
         500,
         true,
         'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
         '(98)',
-        'oxx564hMBUI'),
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '111',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Course for mental heal level 1',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '112',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Course for mental heal level 1',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '113',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Course for mental heal level 1',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '114',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Course for mental heal level 1',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ]),
     CourseDto(
         '12',
         'Do Xuan Tien',
-        'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+        CourseDto.descriptionDemo,
         'Course for mental heal level 2',
         500,
         false,
         'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
         '(5)',
-        'oxx564hMBUI'),
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '211',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Course for mental heal level 2',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '212',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Course for mental heal level 2',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '213',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Course for mental heal level 2',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '214',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Course for mental heal level 2',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ]),
     CourseDto(
         '13',
         'Do Xuan Tien',
-        'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+        CourseDto.descriptionDemo,
         'Course for mental heal level 3',
         500,
         false,
         'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
         '(56)',
-        'oxx564hMBUI'),
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '311',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Course for mental heal level 3',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '312',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Course for mental heal level 3',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '313',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Course for mental heal level 3',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '314',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Course for mental heal level 3',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ]),
     CourseDto(
         '31',
         'Trinh Van Quyet',
-        'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
+        CourseDto.descriptionDemo,
         'Metal care for Stock trader sesson 1',
         1299,
         false,
         'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
         '(5632)',
-        'oxx564hMBUI'),
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '311',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '312',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '313',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '314',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ]),
     CourseDto(
-        '32',
+        '31',
         'Trinh Van Quyet',
-        'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
-        'Metal care for Stock trader sesson 2',
-        5999,
+        CourseDto.descriptionDemo,
+        'Metal care for Stock trader sesson 1',
+        1299,
         false,
         'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-        '(31)',
-        'oxx564hMBUI'),
-    CourseDto(
-        '33',
-        'Trinh Van Quyet',
-        'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
-        'Metal care for Stock trader sesson 3',
-        4569,
-        false,
-        'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-        '(369)',
-        'oxx564hMBUI'),
-    CourseDto(
-        '34',
-        'Trinh Van Quyet',
-        'Flutter - a framework developed by Google - allows you to learn one language (Dart) and build beautiful native mobile apps in no time. \nFlutter is a SDK providing the tooling to compile Dart code into native code and it also gives you a rich set of pre-built and pre-styled UI elements (so called widgets) which you can use to compose your user interfaces. This course will teach Flutter & Dart from scratch, NO prior knowledge of either of the two is required! And you certainly don\'t need any Android or iOS development experience since the whole idea behind Flutter is to only learn one language. \nUse Google\'s Material Design to build beautiful, yet fully customizable, apps in no time with almost zero effort. You can use the rich widget suite Flutter provides to add common UI elements like buttons, switches, forms, toolbars, lists and more - or you simply build your own widgets - Flutter makes that a breeze, too.',
-        'Metal care for Stock trader sesson 4',
-        2389,
-        false,
-        'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
-        '(222)',
-        'oxx564hMBUI')
+        '(5632)',
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '311',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '312',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '313',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '314',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ])
   ];
 
   // actions:-------------------------------------------------------------------
@@ -160,14 +290,6 @@ abstract class _UserStore with Store {
   void dispose() {
     for (final d in _disposers) {
       d();
-    }
-  }
-
-  @action
-  void addCourse(CourseDto? course) {
-    if (course != null) {
-      myCourses.add(course);
-      myCourses = myCourses;
     }
   }
 }

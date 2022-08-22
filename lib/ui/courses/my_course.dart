@@ -32,7 +32,7 @@ class _MyCoursesScreenState extends State<MyCoursesScreen> {
     return AppBar(
       centerTitle: true,
       backgroundColor: Color(0xFFF3F6FD),
-      title: Text('Course Detail'),
+      title: Text('My courses'),
       // actions: _buildActions(context),
     );
   }
@@ -160,7 +160,8 @@ class _MyCoursesScreenState extends State<MyCoursesScreen> {
     ];
     return GestureDetector(
       onTap: (() {
-        Navigator.of(context).pushNamed(Routes.detail_course, arguments: data);
+        data.currentLessonIdx = 0;
+        Navigator.of(context).pushNamed(Routes.study_course, arguments: data);
       }),
       child: Container(
         width: 200,
