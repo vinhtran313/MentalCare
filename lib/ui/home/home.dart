@@ -13,6 +13,9 @@ import 'package:material_dialog/material_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './components/bottomTabBar.dart';
+import '../chat/chat.dart';
+import '../setting/settings.dart';
+import '../calendar/calendar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -32,19 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
       'Index 0: Home',
       style: optionStyle,
     ),
-    Text(
-      'Index 1: Chat',
-      style: optionStyle,
-    ),
+    ChatPage(),
     CoursesScreen(),
-    Text(
-      'Index 4: Settings',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Main',
-      style: optionStyle,
-    ),
+    SettingPages(),
+    Calendar(),
   ];
 
   void _onItemTapped(int index) {
