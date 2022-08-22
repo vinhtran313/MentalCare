@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../models/setting/setting.dart';
+import '../calendar/calendar.dart';
+import 'package:boilerplate/stores/theme/theme_store.dart';
+import 'package:provider/provider.dart';
 
 class SettingPages extends StatefulWidget {
   const SettingPages({Key? key}) : super(key: key);
@@ -10,15 +13,23 @@ class SettingPages extends StatefulWidget {
 }
 
 class _SettingPagesState extends State<SettingPages> {
+  late ThemeStore _themeStore;
   bool isSwitched = false;
   List<SettingModal> settings = [
     SettingModal(name: 'Tai khoan', icon: 'assets/icons/user_icon.svg'),
     SettingModal(name: 'Thong bao', icon: 'assets/icons/bell.svg'),
     SettingModal(name: 'Cai dat', icon: 'assets/icons/settings.svg'),
-    SettingModal(
-        name: 'Trung tam tro giup', icon: 'assets/icons/question_mark.svg'),
+    // SettingModal(
+    //     name: 'Trung tam tro giup', icon: 'assets/icons/question_mark.svg'),
     // SettingModal(name: 'Dang xuat', icon: 'assets/icons/log_out.svg'),
   ];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _themeStore = Provider.of<ThemeStore>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -101,6 +112,46 @@ class _SettingPagesState extends State<SettingPages> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: FlatButton(
+            padding: EdgeInsets.only(top: 20, bottom: 20, right: 20, left: 20),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            color: Color(0xFFF5F6F9),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Calendar();
+                  },
+                ),
+              );
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Icons.calendar_month,
+                  color: Colors.purple,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: Text(
+                    'Calendar',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.purple,
+                )
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: FlatButton(
             padding: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -128,6 +179,7 @@ class _SettingPagesState extends State<SettingPages> {
                       isSwitched = value;
                       print(isSwitched);
                     });
+                    // _themeStore.changeBrightnessToDark(!_themeStore.darkMode);
                   },
                   activeTrackColor: Colors.purple[100],
                   activeColor: Colors.purple,
