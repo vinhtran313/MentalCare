@@ -1,10 +1,11 @@
 //
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 /// Helper class for device related operations.
 ///
 class DeviceUtils {
-
   ///
   /// hides the keyboard if its already open
   ///
@@ -18,9 +19,9 @@ class DeviceUtils {
   ///
   static double getScaledSize(BuildContext context, double scale) =>
       scale *
-          (MediaQuery.of(context).orientation == Orientation.portrait
-              ? MediaQuery.of(context).size.width
-              : MediaQuery.of(context).size.height);
+      (MediaQuery.of(context).orientation == Orientation.portrait
+          ? MediaQuery.of(context).size.width
+          : MediaQuery.of(context).size.height);
 
   ///
   /// accepts a double [scale] and returns scaled sized based on the screen
@@ -35,4 +36,7 @@ class DeviceUtils {
   ///
   static double getScaledHeight(BuildContext context, double scale) =>
       scale * MediaQuery.of(context).size.height;
+  static Image imageFromBase64(String base64) {
+    return Image.memory(base64Decode(base64));
+  }
 }

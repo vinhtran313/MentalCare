@@ -23,40 +23,42 @@ class _SettingPagesState extends State<SettingPages> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Center(
-          child: Stack(
-            children: [
-              Container(
-                width: 130,
-                height: 130,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                        'https://us.123rf.com/450wm/fizkes/fizkes2010/fizkes201000740/157348848-narrow-wide-panoramic-view-headshot-portrait-of-smiling-african-american-young-woman-pose-at-home-ba.jpg?ver=6',
-                      ),
-                    )),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Container(
-                  width: 40,
-                  height: 40,
+        SafeArea(
+          child: Center(
+            child: Stack(
+              children: [
+                Container(
+                  width: 130,
+                  height: 130,
                   decoration: BoxDecoration(
-                      color: Colors.purple,
                       shape: BoxShape.circle,
-                      border: Border.all(
-                          width: 4,
-                          color: Theme.of(context).scaffoldBackgroundColor)),
-                  child: Icon(Icons.edit, color: Colors.white),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                          'https://us.123rf.com/450wm/fizkes/fizkes2010/fizkes201000740/157348848-narrow-wide-panoramic-view-headshot-portrait-of-smiling-african-american-young-woman-pose-at-home-ba.jpg?ver=6',
+                        ),
+                      )),
                 ),
-              )
-            ],
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: Colors.purple,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor)),
+                    child: Icon(Icons.edit, color: Colors.white),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-        SizedBox(height: 20),
+        // SizedBox(height: 10),
         ListView.builder(
           itemCount: settings.length,
           shrinkWrap: true,
