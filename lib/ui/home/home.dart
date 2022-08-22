@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:boilerplate/data/sharedpref/constants/preferences.dart';
+import 'package:boilerplate/ui/courses/courses.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/stores/language/language_store.dart';
 import 'package:boilerplate/stores/post/post_store.dart';
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
       style: optionStyle,
@@ -35,10 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'Index 1: Chat',
       style: optionStyle,
     ),
-    Text(
-      'Index 3: List',
-      style: optionStyle,
-    ),
+    CoursesScreen(),
     Text(
       'Index 4: Settings',
       style: optionStyle,
@@ -88,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      // appBar: _buildAppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

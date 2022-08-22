@@ -70,6 +70,9 @@ dependencies:
 
   google_fonts: ^2.3.2
   flutter_svg: ^1.1.2
+  flutter_rating_bar: ^4.0.1
+  flutter_inappwebview: ^5.4.3+7
+  youtube_player_flutter: ^8.1.0
 
 dev_dependencies:
   flutter_test:
