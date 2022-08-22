@@ -23,43 +23,37 @@ class _SettingPagesState extends State<SettingPages> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          width: double.infinity,
-          child: SizedBox(
-            height: 115,
-            width: 115,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://us.123rf.com/450wm/fizkes/fizkes2010/fizkes201000740/157348848-narrow-wide-panoramic-view-headshot-portrait-of-smiling-african-american-young-woman-pose-at-home-ba.jpg?ver=6',
-                      scale: 20),
-                ),
-                Positioned(
-                  right: 140,
-                  top: 70,
-                  child: SizedBox(
-                    height: 46,
-                    width: 46,
-                    child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        side: BorderSide(color: Colors.white),
+        Center(
+          child: Stack(
+            children: [
+              Container(
+                width: 130,
+                height: 130,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                        'https://us.123rf.com/450wm/fizkes/fizkes2010/fizkes201000740/157348848-narrow-wide-panoramic-view-headshot-portrait-of-smiling-african-american-young-woman-pose-at-home-ba.jpg?ver=6',
                       ),
-                      color: Color(0xFFF5F6F9),
-                      onPressed: () {},
-                      child: Expanded(
-                        flex: 1,
-                        child: SvgPicture.asset(
-                          'assets/icons/camera_icon.svg',
-                        ),
-                      ),
-                    ),
-                  ),
+                    )),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.purple,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          width: 4,
+                          color: Theme.of(context).scaffoldBackgroundColor)),
+                  child: Icon(Icons.edit, color: Colors.white),
                 ),
-              ],
-            ),
+              )
+            ],
           ),
         ),
         SizedBox(height: 20),
