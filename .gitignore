@@ -27,6 +27,9 @@
 .pub-cache/
 .pub/
 build/
+**/*.inject.summary
+**/*.inject.dart
+**/*.g.dart
 
 # Android related
 **/android/**/gradle-wrapper.jar
