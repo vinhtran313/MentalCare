@@ -116,11 +116,13 @@ class _StudyCourseScreenState extends State<StudyCourseScreen> {
   Widget _buildListView() {
     return Column(
         children: _dataCourse!.lessons
-            .map((item) => _buildListCourseItem(item))
+            .asMap()
+            .map((idx, item) => MapEntry(idx, _buildListCourseItem(item, idx)))
+            .values
             .toList());
   }
 
-  Widget _buildListCourseItem(LessonDto lesson) {
+  Widget _buildListCourseItem(LessonDto lesson, int pos) {
     List<Widget> listView = [
       Padding(
         padding: EdgeInsets.symmetric(vertical: 8),
@@ -151,7 +153,11 @@ class _StudyCourseScreenState extends State<StudyCourseScreen> {
       ),
     ];
     return GestureDetector(
-      onTap: (() {}),
+      onTap: (() {
+        _dataCourse?.currentLessonIdx = pos;
+        Navigator.of(context)
+            .pushReplacementNamed(Routes.study_course, arguments: _dataCourse);
+      }),
       child: Container(
         height: 130,
         margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),

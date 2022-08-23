@@ -15,21 +15,25 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   //text controllers:-----------------------------------------------------------
   TextEditingController _userEmailController = TextEditingController();
+  TextEditingController _fullnameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
 
   //stores:---------------------------------------------------------------------
   late ThemeStore _themeStore;
 
   //focus node:-----------------------------------------------------------------
   late FocusNode _passwordFocusNode;
+  late FocusNode _confirmPasswordFocusNode;
+  late FocusNode _fullnameFocusNode;
   late FocusNode _userEmailFocusNode;
 
   //stores:---------------------------------------------------------------------
@@ -40,6 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     _passwordFocusNode = FocusNode();
     _userEmailFocusNode = FocusNode();
+    _confirmPasswordFocusNode = FocusNode();
+    _fullnameFocusNode = FocusNode();
   }
 
   @override
@@ -126,19 +132,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 Spacer(),
                 _buildTitle(),
                 _buildUserIdField(),
+                _buildFullnameField(),
                 _buildPasswordField(),
+                _buildConfirmPasswordField(),
                 // _buildForgotPasswordButton(),
                 SizedBox.fromSize(
-                  size: Size(1, 50),
+                  size: Size(1, 30),
                 ),
                 _buildSignInButton(),
-                Spacer(),
+                SizedBox.fromSize(
+                  size: Size(1, 30),
+                ),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Row(
                     children: [
                       Spacer(),
-                      Text('Chưa có tài khoản? '),
+                      Text('Đã có tài khoản? '),
                       Padding(
                         padding: EdgeInsets.all(0),
                         child: ElevatedButton(
@@ -150,11 +160,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: GestureDetector(
                             onTap: () {
                               Navigator.of(context).pushNamedAndRemoveUntil(
-                                  Routes.signup,
+                                  Routes.login,
                                   (Route<dynamic> route) => false);
                             },
                             child: Text(
-                              "Đăng ký ngay",
+                              "Đăng nhập",
                               style: TextStyle(
                                   color: Theme.of(context).colorScheme.primary),
                             ),
@@ -179,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
       children: [
         Align(
           child: Text(
-            'Đăng nhập',
+            'Đăng ký',
             textAlign: TextAlign.right,
             style: TextStyle(
                 color: Color(0xFF000000),
@@ -187,22 +197,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 fontSize: 30),
           ),
           alignment: Alignment.centerLeft,
-        ),
-        // SizedBox.fromSize(
-        //   size: Size(1, 20),
-        // ),
-        // Align(
-        //   child: Text(
-        //     'Đăng nhập',
-        //     textAlign: TextAlign.right,
-        //     style: TextStyle(
-        //       color: Color(0xFF000000),
-        //     ),
-        //   ),
-        //   alignment: Alignment.centerLeft,
-        // ),
-        SizedBox.fromSize(
-          size: Size(1, 20),
         ),
       ],
     );
@@ -223,13 +217,37 @@ class _LoginScreenState extends State<LoginScreen> {
             _store.setUserId(_userEmailController.text);
           },
           onFieldSubmitted: (value) {
+            FocusScope.of(context).requestFocus(_fullnameFocusNode);
+          },
+          errorText: null,
+          padding: EdgeInsets.only(left: 10, bottom: 10, right: 10, top: 10),
+          margin: EdgeInsets.only(left: 0, bottom: 20, right: 0, top: 20),
+          label: 'EMAIL',
+          focusNode: _userEmailFocusNode,
+        );
+      },
+    );
+  }
+
+  Widget _buildFullnameField() {
+    return Observer(
+      builder: (context) {
+        return CustomTextFieldWidget(
+          hint: 'Nhập họ tên',
+          inputType: TextInputType.emailAddress,
+          icon: Icons.person,
+          iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
+          textController: _fullnameController,
+          inputAction: TextInputAction.next,
+          autoFocus: false,
+          onFieldSubmitted: (value) {
             FocusScope.of(context).requestFocus(_passwordFocusNode);
           },
           errorText: null,
           padding: EdgeInsets.only(left: 10, bottom: 10, right: 10, top: 10),
           margin: EdgeInsets.only(left: 0, bottom: 20, right: 0, top: 0),
-          label: 'EMAIL',
-          focusNode: _userEmailFocusNode,
+          label: 'Họ tên',
+          focusNode: _fullnameFocusNode,
         );
       },
     );
@@ -246,22 +264,36 @@ class _LoginScreenState extends State<LoginScreen> {
           iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
           textController: _passwordController,
           focusNode: _passwordFocusNode,
+          margin: EdgeInsets.only(left: 0, bottom: 20, right: 0, top: 0),
+          onFieldSubmitted: (value) {
+            FocusScope.of(context).requestFocus(_confirmPasswordFocusNode);
+          },
           errorText: null,
           onChanged: (value) {
             _store.setPassword(_passwordController.text);
           },
           label: 'Mật khẩu',
-          rightInputWidget: Container(
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent, shadowColor: Colors.transparent),
-              child: Text(
-                "Quên mật khẩu",
-                style: TextStyle(color: Theme.of(context).colorScheme.primary),
-              ),
-            ),
-          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildConfirmPasswordField() {
+    return Observer(
+      builder: (context) {
+        return CustomTextFieldWidget(
+          hint: 'Nhập lại mật khẩu',
+          isObscure: true,
+          padding: EdgeInsets.only(left: 10, bottom: 10, right: 10, top: 10),
+          icon: Icons.lock,
+          iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
+          textController: _confirmPasswordController,
+          focusNode: _confirmPasswordFocusNode,
+          errorText: null,
+          onChanged: (value) {
+            _store.setPassword(_passwordController.text);
+          },
+          label: 'Xác nhận mật khẩu',
         );
       },
     );
@@ -287,13 +319,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildSignInButton() {
     return GradientButtonWidget(
       padding: EdgeInsets.symmetric(vertical: 8),
-      buttonText: 'Đăng nhập',
+      buttonText: 'Đăng ký',
       buttonColor: Theme.of(context).colorScheme.primary,
       textColor: Colors.white,
       onPressed: () async {
         Future.delayed(Duration(milliseconds: 0), () {
           Navigator.of(context).pushNamedAndRemoveUntil(
-              Routes.home, (Route<dynamic> route) => false);
+              Routes.login, (Route<dynamic> route) => false);
         });
       },
     );
