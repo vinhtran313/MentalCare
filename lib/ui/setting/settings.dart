@@ -1,3 +1,4 @@
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../models/setting/setting.dart';
@@ -19,6 +20,7 @@ class _SettingPagesState extends State<SettingPages> {
     SettingModal(name: 'Tai khoan', icon: 'assets/icons/user_icon.svg'),
     SettingModal(name: 'Thong bao', icon: 'assets/icons/bell.svg'),
     SettingModal(name: 'Cai dat', icon: 'assets/icons/settings.svg'),
+    SettingModal(name: 'Khóa học đã đăng ký', icon: 'assets/icons/bell.svg'),
     // SettingModal(
     //     name: 'Trung tam tro giup', icon: 'assets/icons/question_mark.svg'),
   ];
@@ -83,7 +85,11 @@ class _SettingPagesState extends State<SettingPages> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
                   color: Color(0xFFF5F6F9),
-                  onPressed: () {},
+	              onPressed: () {
+	                if (settings[index].name == 'Khóa học đã đăng ký') {
+	                  Navigator.of(context).pushNamed(Routes.my_courses);
+	                }
+	              },
                   child: Row(
                     children: [
                       SvgPicture.asset(
