@@ -1,10 +1,12 @@
+import 'package:boilerplate/ui/courses/courses.dart';
 import 'package:boilerplate/stores/language/language_store.dart';
 import 'package:boilerplate/stores/post/post_store.dart';
 import 'package:boilerplate/stores/theme/theme_store.dart';
-import 'package:boilerplate/ui/news/news.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './components/bottomTabBar.dart';
+import '../chat/chat.dart';
+import '../setting/settings.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -19,20 +21,14 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> listScreen = <Widget>[
-    NewsScreen(),
+  static List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 1: Chat',
+      'Index 0: Home',
       style: optionStyle,
     ),
-    Text(
-      'Index 3: List',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 4: Settings',
-      style: optionStyle,
-    ),
+    ChatPage(),
+    CoursesScreen(),
+    SettingPages(),
     Text(
       'Index 2: Main',
       style: optionStyle,
