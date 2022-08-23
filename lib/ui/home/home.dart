@@ -1,9 +1,8 @@
 import 'package:boilerplate/stores/language/language_store.dart';
 import 'package:boilerplate/stores/post/post_store.dart';
 import 'package:boilerplate/stores/theme/theme_store.dart';
-import 'package:boilerplate/utils/locale/app_localization.dart';
+import 'package:boilerplate/ui/news/news.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import './components/bottomTabBar.dart';
 
@@ -20,11 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+  static const List<Widget> listScreen = <Widget>[
+    NewsScreen(),
     Text(
       'Index 1: Chat',
       style: optionStyle,
@@ -83,17 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xff000000),
-        appBar: _buildAppBar(),
+        backgroundColor: Color.fromRGBO(243, 246, 253, 1),
         body: SafeArea(
-          top: true,
-          left: true,
-          right: true,
-          minimum: EdgeInsets.only(top: 16.0),
-          child: Text(
-            "Hello World",
-            style: TextStyle(color: Colors.white),
-          ),
+          child: listScreen[_selectedIndex],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: _buildFloatingButton(),
@@ -103,11 +91,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // app bar methods:-----------------------------------------------------------
-  PreferredSizeWidget _buildAppBar() {
-    return AppBar(
-      backgroundColor: Color(0xffffffff),
-    );
-  }
 
   Widget _buildFloatingButton() {
     return Container(
