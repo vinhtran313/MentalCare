@@ -4,6 +4,7 @@ import 'package:boilerplate/ui/courses/my_course.dart';
 import 'package:boilerplate/ui/courses/study_course.dart';
 import 'package:boilerplate/ui/home/home.dart';
 import 'package:boilerplate/ui/login/login.dart';
+import 'package:boilerplate/ui/login/signup.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class Routes {
   static const String detail_course = '/detail_course';
   static const String my_courses = '/my_courses';
   static const String study_course = '/study_course';
+  static const String signup = '/signup';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -27,5 +29,6 @@ class Routes {
     detail_course: (BuildContext context) => CourseDetailScreen(),
     my_courses: (BuildContext context) => MyCoursesScreen(),
     study_course: (BuildContext context) => StudyCourseScreen(),
+    signup: (BuildContext context) => SignupScreen(),
   };
 }
