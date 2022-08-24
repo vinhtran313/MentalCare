@@ -1,4 +1,5 @@
 import 'package:boilerplate/stores/error/error_store.dart';
+import 'package:boilerplate/ui/courses/courses.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../data/repository.dart';
@@ -23,7 +24,6 @@ abstract class _UserStore with Store {
 
   // constructor:---------------------------------------------------------------
   _UserStore(Repository repository) : this._repository = repository {
-
     // setting up disposers
     _setupDisposers();
 
@@ -44,7 +44,7 @@ abstract class _UserStore with Store {
 
   // empty responses:-----------------------------------------------------------
   static ObservableFuture<bool> emptyLoginResponse =
-  ObservableFuture.value(false);
+      ObservableFuture.value(false);
 
   // store variables:-----------------------------------------------------------
   @observable
@@ -56,10 +56,213 @@ abstract class _UserStore with Store {
   @computed
   bool get isLoading => loginFuture.status == FutureStatus.pending;
 
+  @observable
+  List<CourseDto> myCourses = [
+    CourseDto(
+        '11',
+        'Do Xuan Tien',
+        CourseDto.descriptionDemo,
+        'Course for mental heal level 1',
+        500,
+        true,
+        'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+        '(98)',
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '111',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Course for mental heal level 1',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '112',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Course for mental heal level 1',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '113',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Course for mental heal level 1',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '114',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Course for mental heal level 1',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ]),
+    CourseDto(
+        '12',
+        'Do Xuan Tien',
+        CourseDto.descriptionDemo,
+        'Course for mental heal level 2',
+        500,
+        false,
+        'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+        '(5)',
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '211',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Course for mental heal level 2',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '212',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Course for mental heal level 2',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '213',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Course for mental heal level 2',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '214',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Course for mental heal level 2',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ]),
+    CourseDto(
+        '13',
+        'Do Xuan Tien',
+        CourseDto.descriptionDemo,
+        'Course for mental heal level 3',
+        500,
+        false,
+        'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+        '(56)',
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '311',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Course for mental heal level 3',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '312',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Course for mental heal level 3',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '313',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Course for mental heal level 3',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '314',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Course for mental heal level 3',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ]),
+    CourseDto(
+        '31',
+        'Trinh Van Quyet',
+        CourseDto.descriptionDemo,
+        'Metal care for Stock trader sesson 1',
+        1299,
+        false,
+        'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+        '(5632)',
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '311',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '312',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '313',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '314',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ]),
+    CourseDto(
+        '31',
+        'Trinh Van Quyet',
+        CourseDto.descriptionDemo,
+        'Metal care for Stock trader sesson 1',
+        1299,
+        false,
+        'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
+        '(5632)',
+        'oxx564hMBUI',
+        lessons: [
+          LessonDto(
+              '311',
+              CourseDto.descriptionDemo,
+              'Lesson 1: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 1',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '312',
+              CourseDto.descriptionDemo,
+              'Lesson 2: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 2',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '313',
+              CourseDto.descriptionDemo,
+              'Lesson 3: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 3',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png'),
+          LessonDto(
+              '314',
+              CourseDto.descriptionDemo,
+              'Lesson 4: Metal care for Stock trader sesson 1',
+              'oxx564hMBUI',
+              'Lesson 4',
+              'https://www.royaleinstitution.com/images/mental_health_courses_india.png')
+        ])
+  ];
+
   // actions:-------------------------------------------------------------------
   @action
   Future login(String email, String password) async {
-
     final future = _repository.login(email, password);
     loginFuture = ObservableFuture(future);
     await future.then((value) async {

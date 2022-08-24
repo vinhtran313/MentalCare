@@ -41,6 +41,8 @@ class AppThemeData {
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.background,
         elevation: 0,
+        titleTextStyle: TextStyle(
+            fontSize: 22, color: Colors.black, fontWeight: FontWeight.bold),
         iconTheme: IconThemeData(color: colorScheme.primary),
       ),
       iconTheme: IconThemeData(color: colorScheme.onPrimary),
@@ -80,7 +82,7 @@ class AppThemeData {
     primaryContainer: Color(0xFF1CDEC9),
     secondary: Color(0xFF4D1F7C),
     secondaryContainer: Color(0xFF451B6F),
-    background: Color(0xFF241E30),
+    background: Color(0xFFF3F6FD),
     surface: Color(0xFF1F1929),
     onBackground: Color(0x0DFFFFFF),
     // White with 0.05 opacity
