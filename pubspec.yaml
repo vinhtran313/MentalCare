@@ -19,7 +19,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_cupertino_localizations: ^1.0.1
-
+  modal_bottom_sheet: ^2.1.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
@@ -121,13 +121,33 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: ProductSans
-      fonts:
-        - asset: assets/fonts/Product-Sans-Regular.ttf
-        - asset: assets/fonts/Product-Sans-Italic.ttf
-          style: italic
-        - asset: assets/fonts/Product-Sans-Bold.ttf
-          weight: 700
+  - family: ProductSans
+    fonts:
+    - asset: assets/fonts/Product-Sans-Regular.ttf
+    - asset: assets/fonts/Product-Sans-Italic.ttf
+      style: italic
+    - asset: assets/fonts/Product-Sans-Bold.ttf
+      weight: 700
+  - family: Roboto
+    fonts:
+    - asset: assets/fonts/Roboto-Regular.ttf
+    - asset: assets/fonts/Roboto-Italic.ttf
+      style: italic
+    - asset: assets/fonts/Roboto-Bold.ttf
+      weight: 700
+    - asset: assets/fonts/Roboto-BoldItalic.ttf
+      weight: 700
+      style: italic
+    - asset: assets/fonts/Roboto-Medium.ttf
+      weight: 500
+    - asset: assets/fonts/Roboto-MediumItalic.ttf
+      weight: 500
+      style: italic
+    - asset: assets/fonts/Roboto-Black.ttf
+      weight: 900
+    - asset: assets/fonts/Roboto-BlackItalic.ttf
+      weight: 900
+      style: italic
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages

@@ -1,9 +1,14 @@
+import 'package:boilerplate/ui/home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../../models/calendar/calendarModal.dart';
 
 class Calendar extends StatefulWidget {
-  const Calendar({Key? key}) : super(key: key);
+  const Calendar({Key? key, this.name, this.bookingTime}) : super(key: key);
+
+  final String? name;
+  final DateTime? bookingTime;
 
   @override
   _CalendarState createState() => _CalendarState();
@@ -13,23 +18,32 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0xffF3F6FD),
         appBar: AppBar(
-          flexibleSpace: SafeArea(
-              child: Container(
-            padding: EdgeInsets.only(right: 16),
-            child: Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "Calendar",
-                    style: TextStyle(color: Colors.black, fontSize: 23),
-                  )
-                ],
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Color(0xff492497),
+          ),
+          title: Text(
+            "Lịch tư vấn",
+            style: TextStyle(color: Colors.black),
+          ),
+          centerTitle: true,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Colors.black,
+            ),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeScreen(
+                  index: 3,
+                ),
               ),
             ),
-          )),
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
         ),
         body: SafeArea(
           child: SfCalendar(
@@ -53,6 +67,13 @@ class _CalendarState extends State<Calendar> {
     final DateTime endTime = startTime.add(const Duration(hours: 2));
     meetings.add(Meeting(
         'Conference', startTime, endTime, const Color(0xFF0F8644), false));
+    if (widget.bookingTime != null && widget.name != null) {
+      final myStartTime = widget.bookingTime as DateTime;
+      final myEndTime = myStartTime.add(Duration(hours: 1));
+
+      meetings.add(Meeting(
+          'Tư vấn', myStartTime, myEndTime, const Color(0xFF0F8644), false));
+    }
     return meetings;
   }
 }

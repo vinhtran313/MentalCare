@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../models/chat/chatMessageModal.dart';
 
 class ChatDetailPage extends StatefulWidget {
@@ -13,14 +14,18 @@ class ChatDetailPage extends StatefulWidget {
 
 class _ChatDetailPageState extends State<ChatDetailPage> {
   List<ChatMessage> messages = [
-    ChatMessage(messageContent: "Hello, Will", messageType: "receiver"),
-    ChatMessage(messageContent: "How have you been?", messageType: "receiver"),
+    ChatMessage(messageContent: "Chào bạn", messageType: "receiver"),
     ChatMessage(
-        messageContent: "Hey Kriss, I am doing fine dude. wbu?",
+        messageContent: "Dạo này tình hình thế nào", messageType: "receiver"),
+    ChatMessage(
+        messageContent: "Chào bác sĩ, mọi việc tiến triển đều tốt",
         messageType: "sender"),
-    ChatMessage(messageContent: "ehhhh, doing OK.", messageType: "receiver"),
     ChatMessage(
-        messageContent: "Is there any thing wrong?", messageType: "sender"),
+        messageContent: "Tốt lắm, tiến bộ vượt kỳ vọng của tôi",
+        messageType: "receiver"),
+    ChatMessage(
+        messageContent: "Tất cả đều có công của bác sĩ ạ",
+        messageType: "sender"),
   ];
 
   String text = '';
@@ -29,20 +34,26 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Color(0xff492497),
+        ),
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         flexibleSpace: SafeArea(
           child: Container(
-            padding: EdgeInsets.only(right: 16),
+            padding: EdgeInsets.only(
+              left: 48,
+              right: 15,
+            ),
             child: Row(
               children: <Widget>[
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  ),
-                ),
                 SizedBox(width: 2),
                 CircleAvatar(
                   backgroundImage: NetworkImage(widget.image),
@@ -146,7 +157,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     child: TextField(
                       controller: txt,
                       decoration: InputDecoration(
-                        hintText: 'Nhap tin nhan...',
+                        hintText: 'Nhập tin nhắn...',
                         hintStyle: TextStyle(
                           color: Colors.black54,
                         ),

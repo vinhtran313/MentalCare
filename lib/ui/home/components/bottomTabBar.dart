@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FABBottomAppBarItem {
-  FABBottomAppBarItem({required this.iconData, required this.text});
+  FABBottomAppBarItem(
+      {required this.iconData,
+      required this.iconDataSelected,
+      required this.text});
+
   String iconData;
   String text;
+  String iconDataSelected;
 }
 
 class FABBottomAppBar extends StatefulWidget {
@@ -21,6 +27,7 @@ class FABBottomAppBar extends StatefulWidget {
       required this.onItemTapped}) {
     assert(this.items.length == 2 || this.items.length == 4);
   }
+
   final List<FABBottomAppBarItem> items;
   final String centerItemText;
   final double height;
@@ -70,7 +77,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
           children: <Widget>[
             SizedBox(height: widget.iconSize),
             Text(
-              widget.centerItemText ?? '',
+              widget.centerItemText,
               style: TextStyle(color: widget.color),
             ),
           ],
@@ -84,8 +91,11 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
     required int index,
     required ValueChanged<int> onPressed,
   }) {
-    Color color =
-        widget.selectedIndex == index ? widget.selectedColor : widget.color;
+    String urlIcon =
+        widget.selectedIndex == index ? item.iconDataSelected : item.iconData;
+    Color color = widget.selectedIndex == index
+        ? widget.selectedColor
+        : Colors.transparent;
     return Expanded(
       child: SizedBox(
         height: widget.height,
@@ -95,17 +105,16 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
             splashColor: Colors.transparent,
             enableFeedback: false,
             onTap: () => onPressed(index),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(item.iconData,
-                    color: color, fit: BoxFit.cover, width: 30, height: 30),
-                // Text(
-                //   item.text,
-                //   style: TextStyle(color: color),
-                // )
-              ],
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 12.0),
+              decoration: BoxDecoration(
+                border: Border(top: BorderSide(width: 1.5, color: color)),
+              ),
+              child: SvgPicture.asset(urlIcon,
+                  height: 24.0,
+                  width: 24.0,
+                  allowDrawingOutsideViewBox: true,
+                  fit: BoxFit.scaleDown),
             ),
           ),
         ),

@@ -10,53 +10,41 @@ class ChatPage extends StatefulWidget {
 class _State extends State<ChatPage> {
   List<ChatUsers> chatUsers = [
     ChatUsers(
-        name: "Jane Russel",
-        text: "Awesome Setup",
+        name: "TS Đỗ Bá Đạt",
+        text: "Cố gắng lên nhé",
         image:
             "https://preview.keenthemes.com/metronic-v4/theme_rtl/assets/pages/media/profile/profile_user.jpg",
-        time: "Now"),
+        time: "Bây giờ"),
     ChatUsers(
-        name: "Glady's Murphy",
-        text: "That's Great",
+        name: "TS Đoàn Thị Hiền",
+        text: "Tốt lắm rồi, mọi chuyện đều sẽ ổn thôi",
         image:
             "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80",
-        time: "Yesterday"),
+        time: "Hôm qua"),
     ChatUsers(
-        name: "Jorge Henry",
-        text: "Hey where are you?",
+        name: "PGS.TS Trần Mạnh Hùng",
+        text: "Tiến triển tốt hơn dự tính",
         image:
             "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80",
-        time: "31 Mar"),
+        time: "25 Tháng 8"),
     ChatUsers(
-        name: "Philip Fox",
-        text: "Busy! Call me in 20 mins",
+        name: "TS Hà Trung Quân",
+        text: "Có thể tâm sự với tôi được không",
         image:
             "https://www.citrix.com/blogs/wp-content/upload/2018/03/slack_compressed-e1521621363404-360x360.jpg",
-        time: "28 Mar"),
+        time: "25 Tháng 8"),
     ChatUsers(
-        name: "Debra Hawkins",
-        text: "Thankyou, It's awesome",
+        name: "TS Hoàng Trung",
+        text: "Cảm ơn, tôi rất trân trọng!",
         image:
             "https://t4.ftcdn.net/jpg/04/31/64/75/360_F_431647519_usrbQ8Z983hTYe8zgA7t1XVc5fEtqcpa.jpg",
-        time: "23 Mar"),
+        time: "23 Tháng 8"),
     ChatUsers(
-        name: "Jacob Pena",
-        text: "will update you in evening",
+        name: "PGS.TS Võ Văn Kình",
+        text: "Ghi lại quá trình giúp tôi nhé",
         image:
             "https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg",
-        time: "17 Mar"),
-    ChatUsers(
-        name: "Andrey Jones",
-        text: "Can you please share the file?",
-        image:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhrlH9QlMjus9pQY0IPfd97FE7RdNVga3MY-lMqsaltgspxx3q_-Bg6wcOJDYGnPy1gIU&usqp=CAU",
-        time: "24 Feb"),
-    ChatUsers(
-        name: "John Wick",
-        text: "How are you?",
-        image:
-            "https://us.123rf.com/450wm/fizkes/fizkes2010/fizkes201000740/157348848-narrow-wide-panoramic-view-headshot-portrait-of-smiling-african-american-young-woman-pose-at-home-ba.jpg?ver=6",
-        time: "18 Feb"),
+        time: "17 Tháng 8"),
   ];
   @override
   Widget build(BuildContext context) {
@@ -72,9 +60,9 @@ class _State extends State<ChatPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text("Cuoc tro chuyen",
+                  Text("Lịch sử trò chuyện",
                       style:
-                          TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                   Container(
                     padding:
                         EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
@@ -87,7 +75,7 @@ class _State extends State<ChatPage> {
                       SizedBox(
                         width: 2,
                       ),
-                      Text("Them moi",
+                      Text("Thêm mới",
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -102,7 +90,7 @@ class _State extends State<ChatPage> {
             padding: EdgeInsets.only(left: 16, right: 16, top: 16),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Tim kiem...',
+                hintText: 'Tìm kiếm',
                 hintStyle: TextStyle(color: Colors.grey.shade600),
                 prefixIcon:
                     Icon(Icons.search, color: Colors.grey.shade600, size: 20),

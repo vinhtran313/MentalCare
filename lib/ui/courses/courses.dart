@@ -48,12 +48,12 @@ class CoursesScreen extends StatefulWidget {
 
 class _CoursesScreenState extends State<CoursesScreen> {
   final List<CategoryCourseDto> fakeData = [
-    CategoryCourseDto("1", 'Popular courses', [
+    CategoryCourseDto("1", 'Khóa học phổ biến', [
       CourseDto(
           '11',
           'Do Xuan Tien',
           CourseDto.descriptionDemo,
-          'Course for mental heal level 1',
+          'Kiểm soát tâm lý 1',
           500,
           true,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
@@ -63,7 +63,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
           '12',
           'Do Xuan Tien',
           CourseDto.descriptionDemo,
-          'Course for mental heal level 2',
+          'Kiểm soát tâm lý 2',
           500,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
@@ -73,19 +73,19 @@ class _CoursesScreenState extends State<CoursesScreen> {
           '13',
           'Do Xuan Tien',
           CourseDto.descriptionDemo,
-          'Course for mental heal level 3',
+          'Kiểm soát tâm lý 3',
           500,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
           '(56)',
           'oxx564hMBUI')
     ]),
-    CategoryCourseDto("2", 'New courses', [
+    CategoryCourseDto("2", 'Mới', [
       CourseDto(
           '21',
           'Tran Hoang Vinh',
           CourseDto.descriptionDemo,
-          'Exams for mental coaching level 1',
+          'Thấu hiểu chính mình và chữa lành quá khứ 1',
           1500,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
@@ -95,7 +95,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
           '22',
           'Tran Hoang Vinh',
           CourseDto.descriptionDemo,
-          'Exams for mental coaching level 2',
+          'Thấu hiểu chính mình và chữa lành quá khứ 2',
           1500,
           true,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
@@ -105,19 +105,19 @@ class _CoursesScreenState extends State<CoursesScreen> {
           '23',
           'Tran Hoang Vinh',
           CourseDto.descriptionDemo,
-          'Exams for mental coaching level 3',
+          'Thấu hiểu chính mình và chữa lành quá khứ3',
           1500,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
           '(83)',
           'oxx564hMBUI')
     ]),
-    CategoryCourseDto("3", 'Hot course', [
+    CategoryCourseDto("3", 'Khóa học bán chạy', [
       CourseDto(
           '31',
           'Trinh Van Quyet',
           CourseDto.descriptionDemo,
-          'Metal care for Stock trader sesson 1',
+          'Cùng con vượt qua rối loạn tâm lý',
           1299,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
@@ -127,7 +127,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
           '32',
           'Trinh Van Quyet',
           CourseDto.descriptionDemo,
-          'Metal care for Stock trader sesson 2',
+          'Tâm lý phụ nữ',
           5999,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
@@ -137,7 +137,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
           '33',
           'Trinh Van Quyet',
           CourseDto.descriptionDemo,
-          'Metal care for Stock trader sesson 3',
+          'Tâm lý học hành vi',
           4569,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
@@ -147,7 +147,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
           '34',
           'Trinh Van Quyet',
           CourseDto.descriptionDemo,
-          'Metal care for Stock trader sesson 4',
+          'Phát triển tâm lý khỏe mạnh',
           2389,
           false,
           'https://www.royaleinstitution.com/images/mental_health_courses_india.png',
@@ -173,10 +173,14 @@ class _CoursesScreenState extends State<CoursesScreen> {
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       backgroundColor: Color(0xFFF3F6FD),
+      elevation: 0.0,
       title: Align(
         child: Text(
-          'List courses',
+          'Danh sách khóa học',
           textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black,
+          ),
         ),
       ),
       // actions: _buildActions(context),
