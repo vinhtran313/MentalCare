@@ -1,5 +1,7 @@
 import 'package:boilerplate/ui/doctors/list_doctor.dart';
+import 'package:boilerplate/ui/purchase/purchase.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class BookingDoctor extends StatefulWidget {
   const BookingDoctor({Key? key, required this.doctor}) : super(key: key);
@@ -44,6 +46,9 @@ class _BookingDoctorState extends State<BookingDoctor> {
     return Scaffold(
       backgroundColor: Color(0xffF3F6FD),
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Color(0xff492497),
+        ),
         title: Text(
           "Đặt lịch",
           style: TextStyle(color: Colors.black),
@@ -716,7 +721,15 @@ class _BookingDoctorState extends State<BookingDoctor> {
                           color: Colors.white,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                PurchaseScreen(doctor: widget.doctor),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

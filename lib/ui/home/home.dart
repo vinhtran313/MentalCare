@@ -5,12 +5,17 @@ import 'package:boilerplate/stores/theme/theme_store.dart';
 import 'package:boilerplate/ui/doctors/list_doctor.dart';
 import 'package:boilerplate/ui/news/news.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import './components/bottomTabBar.dart';
 import '../chat/chat.dart';
 import '../setting/settings.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key, this.index}) : super(key: key);
+
+  final int? index;
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -40,6 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    if (widget.index != null) {
+      setState(() {
+        _selectedIndex = (widget.index ?? 0);
+      });
+    }
   }
 
   @override
@@ -70,7 +80,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(0),
+          child: AppBar(
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Color(0xff492497),
+            ),
+          ),
+        ),
         backgroundColor: Color.fromRGBO(243, 246, 253, 1),
         body: SafeArea(
           child: listScreen[_selectedIndex],

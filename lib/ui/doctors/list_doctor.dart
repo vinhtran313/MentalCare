@@ -1,5 +1,6 @@
 import 'package:boilerplate/ui/doctors/book_doctor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ListDoctorScreen extends StatefulWidget {
   const ListDoctorScreen({Key? key}) : super(key: key);
@@ -144,14 +145,18 @@ class _ListDoctorScreenState extends State<ListDoctorScreen> {
   ];
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffF3F6FD),
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Color(0xff492497),
+        ),
         title: Text(
           "Danh sách chuyên gia",
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Color(0xffF3F6FD),
+        backgroundColor: Colors.transparent,
       ),
       body: SafeArea(
         child: SingleChildScrollView(

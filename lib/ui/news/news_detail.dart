@@ -14,7 +14,7 @@ class _NewsDetailState extends State<NewsDetail> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          "News Detail",
+          "Bài viết",
           style: TextStyle(
             color: Colors.black,
           ),
@@ -41,7 +41,7 @@ class _NewsDetailState extends State<NewsDetail> {
                 Container(
                   width: double.infinity,
                   child: Image.network(
-                    'https://img.vietcetera.com/wp-content/uploads/2019/08/cropped-Depression-Thumbnail.png',
+                    'https://baovetuonglai.vn/media/uploads/2020/12/25/1412202.jpg',
                   ),
                 ),
                 Container(
