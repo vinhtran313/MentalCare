@@ -2,6 +2,8 @@ import 'package:boilerplate/ui/courses/courses.dart';
 import 'package:boilerplate/stores/language/language_store.dart';
 import 'package:boilerplate/stores/post/post_store.dart';
 import 'package:boilerplate/stores/theme/theme_store.dart';
+import 'package:boilerplate/ui/doctors/list_doctor.dart';
+import 'package:boilerplate/ui/news/news.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './components/bottomTabBar.dart';
@@ -21,18 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+  static List<Widget> listScreen = <Widget>[
+    NewsScreen(),
     ChatPage(),
     CoursesScreen(),
     SettingPages(),
-    Text(
-      'Index 2: Main',
-      style: optionStyle,
-    ),
+    ListDoctorScreen(),
   ];
 
   void _onItemTapped(int index) {

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -110,25 +108,13 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 12.0),
               decoration: BoxDecoration(
-                border:
-                    Border(top: BorderSide(width: 1.5, color: color)),
+                border: Border(top: BorderSide(width: 1.5, color: color)),
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SvgPicture.asset(
-                    urlIcon,
-                    height: 24.0,
-                    width: 24.0,
-                    allowDrawingOutsideViewBox: true,
-                  )
-                  // Text(
-                  //   item.text,
-                  //   style: TextStyle(color: color),
-                  // )
-                ],
-              ),
+              child: SvgPicture.asset(urlIcon,
+                  height: 24.0,
+                  width: 24.0,
+                  allowDrawingOutsideViewBox: true,
+                  fit: BoxFit.scaleDown),
             ),
           ),
         ),
