@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/chat/chatMessageModal.dart';
+import './dialScreen.dart';
 
 class ChatDetailPage extends StatefulWidget {
   String name;
@@ -22,6 +23,32 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     ChatMessage(
         messageContent: "Is there any thing wrong?", messageType: "sender"),
   ];
+
+  _hangUp(context) {
+    Navigator.pop(
+      context,
+    );
+  }
+
+  _showFullModal(context) {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible:
+          false, // should dialog be dismissed when tapped outside
+      barrierLabel: "Modal", // label for barrier
+      transitionDuration: Duration(
+          milliseconds:
+              500), // how long it takes to popup dialog after button click
+      pageBuilder: (_, __, ___) {
+        // your widget implementation
+        return DialScreen(
+            press: () {
+              this._hangUp(context);
+            },
+            image: widget.image);
+      },
+    );
+  }
 
   String text = '';
   var txt = TextEditingController();
@@ -72,9 +99,35 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     ],
                   ),
                 ),
-                Icon(
-                  Icons.settings,
-                  color: Colors.black54,
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: FlatButton(
+                        onPressed: () {
+                          _showFullModal(context);
+                        },
+                        child: Icon(
+                          Icons.call,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: FlatButton(
+                        onPressed: () {
+                          _showFullModal(context);
+                        },
+                        child: Icon(
+                          Icons.video_call,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
